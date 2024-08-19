@@ -6,22 +6,22 @@ import { twMerge } from "tailwind-merge"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-	title: "AI Startup Landing Page",
-	description: "A landing page for an AI startup created with Diego Tech",
+  title: "AI Startup Landing Page | Diego Tech",
+  description: "A landing page for an AI startup created with Diego Tech",
 }
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode
+  children: React.ReactNode
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={twMerge(inter.className, "bg-black text-white antialiased")}
-			>
-				{children}
-			</body>
-		</html>
-	)
+  return (
+    <html lang="en">
+      <body
+        className={twMerge(inter.className, "bg-black text-white antialiased")}
+      >
+        {children}
+      </body>
+    </html>
+  )
 }
