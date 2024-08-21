@@ -1,3 +1,6 @@
+"use client"
+import { DotLottiePlayer } from "@dotlottie/react-player"
+
 const tabs = [
   {
     icon: "/assets/lottie/vroom.lottie",
@@ -34,6 +37,16 @@ export const Features = () => {
           From small startups to large enterprises, our IA-driven tool has
           revolutionized the way businesses approach SEO
         </p>
+
+        {tabs.map((tab) => (
+          <div key={tab.title}>
+            <DotLottiePlayer src={tab.icon} className="size-5" autoplay />
+
+            <div>{tab.title}</div>
+
+            {tab.isNew && <div>new</div>}
+          </div>
+        ))}
       </div>
     </section>
   )
