@@ -23,8 +23,18 @@ const tabs = [
     backgroundPositionY: 27,
     backgroundSizeX: 177,
   },
-];
+]
 
 export const Features = () => {
-  return <section>Features</section>;
-};
+  return (
+    <section>
+      <div className="container">
+        <h2>Elevate your SEO efforts</h2>
+        <p>
+          From small startups to large enterprises, our IA-driven tool has
+          revolutionized the way businesses approach SEO
+        </p>
+      </div>
+    </section>
+  )
+}
