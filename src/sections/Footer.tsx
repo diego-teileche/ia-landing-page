@@ -5,25 +5,50 @@ import YTSocial from "@/assets/social-youtube.svg"
 
 export const Footer = () => {
   return (
-    <footer>
-      <div>
-        <div>
-          <Logo />
-          <div>AI Startup Landing Page</div>
-        </div>
-        <div>
-          <nav>
-            <a href="#">Features</a>
-            <a href="#">Developers</a>
-            <a href="#">Company</a>
-            <a href="#">Blog</a>
-            <a href="#">Changelog</a>
+    <footer className="border-t border-white/15 py-5">
+      <div className="container">
+        <div className="flex flex-col gap-8">
+          <div className="flex items-center gap-2">
+            <Logo className="size-6" />
+            <div className="font-medium">AI Startup Landing Page</div>
+          </div>
+          <nav className="flex flex-col gap-5">
+            <a
+              href="#"
+              className="text-xs text-white/70 transition hover:text-white"
+            >
+              Features
+            </a>
+            <a
+              href="#"
+              className="text-xs text-white/70 transition hover:text-white"
+            >
+              Developers
+            </a>
+            <a
+              href="#"
+              className="text-xs text-white/70 transition hover:text-white"
+            >
+              Company
+            </a>
+            <a
+              href="#"
+              className="text-xs text-white/70 transition hover:text-white"
+            >
+              Blog
+            </a>
+            <a
+              href="#"
+              className="text-xs text-white/70 transition hover:text-white"
+            >
+              Changelog
+            </a>
           </nav>
-        </div>
-        <div>
-          <XSocial />
-          <InstaSocial />
-          <YTSocial />
+          <div className="flex gap-5">
+            <XSocial className="text-white/40 transition hover:cursor-pointer hover:text-white" />
+            <InstaSocial className="text-white/40 transition hover:cursor-pointer hover:text-white" />
+            <YTSocial className="text-white/40 transition hover:cursor-pointer hover:text-white" />
+          </div>
         </div>
       </div>
     </footer>
