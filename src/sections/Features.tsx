@@ -121,6 +121,40 @@ const FeatureTab = (
 export const Features = () => {
   const [selectedTab, setSelectedTab] = useState(0)
 
+  const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX)
+  const backgroundPositionY = useMotionValue(tabs[0].backgroundPositionY)
+  const backgroundSizeX = useMotionValue(tabs[0].backgroundSizeX)
+
+  const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`
+  const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`
+
+  const handleSelectedTab = (index: number) => {
+    setSelectedTab(index)
+
+    const animateOptions: ValueAnimationTransition = {
+      duration: 2,
+      ease: "easeInOut",
+    }
+
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
+      animateOptions,
+    )
+
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), tabs[index].backgroundPositionX],
+      animateOptions,
+    )
+
+    animate(
+      backgroundPositionY,
+      [backgroundPositionY.get(), tabs[index].backgroundPositionY],
+      animateOptions,
+    )
+  }
+
   return (
     <section className="py-20 md:py-24">
       <div className="container">
@@ -138,16 +172,20 @@ export const Features = () => {
               {...tab}
               key={tab.title}
               selected={selectedTab === tabIndex}
-              onClick={() => setSelectedTab(tabIndex)}
+              onClick={() => handleSelectedTab(tabIndex)}
             />
           ))}
         </div>
 
         <div className="mt-3 rounded-xl border border-white/20 p-2.5">
-          <div
+          <motion.div
             className="aspect-video rounded-lg border border-white/20 bg-cover"
-            style={{ backgroundImage: `url(${productImage.src})` }}
-          ></div>
+            style={{
+              backgroundPosition,
+              backgroundSize,
+              backgroundImage: `url(${productImage.src})`,
+            }}
+          ></motion.div>
         </div>
       </div>
     </section>
