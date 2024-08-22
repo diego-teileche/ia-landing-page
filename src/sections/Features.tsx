@@ -1,6 +1,7 @@
 "use client"
-import { DotLottiePlayer } from "@dotlottie/react-player"
+import { DotLottieCommonPlayer, DotLottiePlayer } from "@dotlottie/react-player"
 import productImage from "@/assets/product-image.png"
+import { useRef } from "react"
 
 const tabs = [
   {
@@ -29,6 +30,41 @@ const tabs = [
   },
 ]
 
+const FeatureTab = (tab: (typeof tabs)[number]) => {
+  const dotLottieRef = useRef<DotLottieCommonPlayer>(null)
+
+  const handleTabHover = () => {
+    if (dotLottieRef.current === null) return
+
+    dotLottieRef.current.seek(0)
+    dotLottieRef.current.play()
+  }
+
+  return (
+    <div
+      onMouseEnter={handleTabHover}
+      className="flex items-center gap-2.5 rounded-xl border border-white/15 p-2.5 lg:flex-1"
+    >
+      <div className="inline-flex size-12 items-center justify-center rounded-lg border border-white/15">
+        <DotLottiePlayer
+          ref={dotLottieRef}
+          src={tab.icon}
+          className="size-5"
+          autoplay
+        />
+      </div>
+
+      <div className="font-medium">{tab.title}</div>
+
+      {tab.isNew && (
+        <div className="rounded-full bg-[#8c44ff] px-2 py-0.5 text-xs font-semibold text-black">
+          new
+        </div>
+      )}
+    </div>
+  )
+}
+
 export const Features = () => {
   return (
     <section className="py-20 md:py-24">
@@ -43,22 +79,7 @@ export const Features = () => {
 
         <div className="mt-10 flex flex-col gap-3 lg:flex-row">
           {tabs.map((tab) => (
-            <div
-              key={tab.title}
-              className="flex items-center gap-2.5 rounded-xl border border-white/15 p-2.5 lg:flex-1"
-            >
-              <div className="inline-flex size-12 items-center justify-center rounded-lg border border-white/15">
-                <DotLottiePlayer src={tab.icon} className="size-5" autoplay />
-              </div>
-
-              <div className="font-medium">{tab.title}</div>
-
-              {tab.isNew && (
-                <div className="rounded-full bg-[#8c44ff] px-2 py-0.5 text-xs font-semibold text-black">
-                  new
-                </div>
-              )}
-            </div>
+            <FeatureTab {...tab} key={tab.title} />
           ))}
         </div>
 
