@@ -1,3 +1,4 @@
+"use client"
 import Button from "@/components/Button"
 import starsBg from "@/assets/stars.png"
 import { motion, useScroll, useTransform } from "framer-motion"
