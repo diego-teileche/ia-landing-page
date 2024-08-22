@@ -33,23 +33,35 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section>
+    <section className="py-20">
       <div className="container">
-        <h2>Beyond Expectations</h2>
-        <p>
+        <h2 className="text-center text-5xl font-medium tracking-tighter">
+          Beyond Expectations
+        </h2>
+        <p className="mt-5 text-center text-lg tracking-tight text-white/70">
           Our revolutionary AI SEO tools have transform our clients&apos;
           strategies
         </p>
 
         {testimonials.map((testimonial) => (
-          <div key={testimonial.name}>
-            <div>{testimonial.text}</div>
-            <Image
-              src={testimonial.avatarImg}
-              alt={`Avatar for ${testimonial.name}`}
-            />
-            <div>{testimonial.name}</div>
-            <div>{testimonial.title}</div>
+          <div
+            key={testimonial.name}
+            className="max-w-xs rounded-xl border border-white/15 bg-[linear-gradient(to_bottom_left,rgba(140,69,255,.3),black)] p-6"
+          >
+            <div className="text-lg tracking-tight">{testimonial.text}</div>
+            <div className="mt-5 flex items-center gap-3">
+              <div className="relative before:absolute before:inset-0 before:z-10 before:rounded-lg before:border before:border-white/30 before:content-[''] after:absolute after:inset-0 after:bg-[rgb(140,69,244)] after:mix-blend-soft-light after:content-['']">
+                <Image
+                  src={testimonial.avatarImg}
+                  className="size-11 rounded-lg border border-white/30 grayscale"
+                  alt={`Avatar for ${testimonial.name}`}
+                />
+              </div>
+              <div>
+                <div>{testimonial.name}</div>
+                <div className="text-sm text-white/50">{testimonial.title}</div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
